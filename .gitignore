@@ -1,1 +1,4 @@
+*.json
+firebase*.json
+serviceAccountKey.json
 ai-model-a6edd-firebase-adminsdk-fbsvc-d11893725f.json
