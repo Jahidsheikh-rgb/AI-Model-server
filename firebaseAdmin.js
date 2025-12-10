@@ -1,16 +1,14 @@
 import admin from "firebase-admin";
 import fs from "fs";
-import path from "path";
 
+const serviceAccount = JSON.parse(
+  fs.readFileSync("./ai-model-a6edd-firebase-adminsdk-fbsvc-d11893725f.json")
+);
 
-const __dirname = path.resolve();
-const serviceAccountPath = path.join(__dirname, "serviceAccountKey.json");
-
-
-const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf-8"));
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
 
 export default admin;
